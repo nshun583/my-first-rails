@@ -6,6 +6,9 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# include ENV file for basic authentification
+ENV.update YAML.load(File.read(File.expand_path('../basic_auth.yml', __FILE__)))
+
 module MyFirstRails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
