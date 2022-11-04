@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 # include ENV file for basic authentification
 ENV.update YAML.load(File.read(File.expand_path('../basic_auth.yml', __FILE__)))
 
+# include ENV file for MySQL authentification
+ENV.update YAML.load(File.read(File.expand_path('../mysql.yml', __FILE__)))
+
 module MyFirstRails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
