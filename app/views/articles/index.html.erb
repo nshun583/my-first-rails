@@ -1,12 +1,16 @@
 <h1>Articles</h1>
 
-Our blog has <%= Article.public_count %>
-<% if Article.public_count == 1 %>
-  article
+<% if Article.kept.public_count == 0 %>
+  Our blog has no articles for now, be the first to write one!
 <% else %>
-  articles
+  Our blog has <%= Article.kept.public_count %>
+  <% if Article.kept.public_count == 1 %>
+    article
+  <% else %>
+    articles
+  <% end %>
+  and counting!
 <% end %>
-and counting!
 
 <ul>
   <% @articles.each do |article| %>
