@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  discarded_at: 2022-11-05 22:39:12
+
+two:
+  category: MyString
+  discarded_at: 2022-11-05 22:39:12
