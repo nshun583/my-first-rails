@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_05_133911) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_174902) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -21,12 +21,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_133911) do
     t.index ["discarded_at"], name: "index_articles_on_discarded_at"
   end
 
-  create_table "category_masters", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "category"
     t.datetime "discarded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["discarded_at"], name: "index_category_masters_on_discarded_at"
+    t.index ["discarded_at"], name: "index_categories_on_discarded_at"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|

@@ -1,2 +1,24 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1>List of Categories</h1>
+Here you can browse / create / edit / delete categories.
+<br>
+<% if Category.kept.count == 0 %>
+  Our blog has no categories for now, be the first to add one!
+<% else %>
+  Our blog has <%= Category.kept.count %>
+  <% if Category.kept.count == 1 %>
+    category
+  <% else %>
+    categories
+  <% end %>
+  for now.
+<% end %>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li>
+        <%= link_to category.category, category_path(category.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Category", new_category_path %>
