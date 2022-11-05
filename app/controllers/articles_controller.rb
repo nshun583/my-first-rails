@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
     @article = Article.kept.find(params[:id])
     @article.discard
 
-    redirect_to root_path, status: :see_other
+    redirect_to action: :index, status: :see_other
   end
 
   private
