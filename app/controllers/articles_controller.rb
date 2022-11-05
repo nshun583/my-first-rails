@@ -1,12 +1,12 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], except: [:index, :show]
+  # http_basic_authenticate_with name: ENV['USERNAME'], password: ENV['PASSWORD'], except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @articles = Article.kept
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.kept.find(params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.kept.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = Article.kept.find(params[:id])
 
     if @article.update(article_params)
       redirect_to @article
@@ -38,8 +38,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    @article = Article.kept.find(params[:id])
+    @article.discard
 
     redirect_to root_path, status: :see_other
   end
