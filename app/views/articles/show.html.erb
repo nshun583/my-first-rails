@@ -1,7 +1,17 @@
-<h1><%= @article.title %></h1>
+<h2>Post</h2>
+<ul>
+<li><p>title : <%= @article.title %></p></li>
+<li><p>content : <%= @article.body %></p></li>
+</ul>
 
-<p><%= @article.body %></p>
+<h2>Categories</h2>
+<%= render @article.categories %>
 
+<h2>Comments</h2>
+<%= render @article.comments.kept %>
+
+<h2>Menu</h2>
+<h3>Edit/Delete:</h3>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
@@ -9,9 +19,7 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
-
-<h2>Comments</h2>
-<%= render @article.comments.kept %>
-
-<h2>Add a comment:</h2>
+<h3>Add a comment:</h2>
 <%= render 'comments/form' %>
+<h3>Add a category:</h2>
+<%= render 'articles_categories/form' %>

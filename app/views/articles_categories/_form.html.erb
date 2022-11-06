@@ -1,0 +1,10 @@
+<%= form_with model: [ @article, @article.articles_categories.build ] do |form| %>
+  <p>
+    <%= collection_check_boxes(:articles_category, :category_id, Category.kept, :id, :category) do |b| %>
+    <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
