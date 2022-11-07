@@ -1,6 +1,6 @@
 <%= form_with model: [ @article, @article.articles_categories.build ] do |form| %>
   <p>
-    <%= # this should make checkboxes to be checked if categories are already registered, but not working %>
+    <%#= this should make checkboxes to be checked if categories are already registered, but not working %>
     <%= collection_check_boxes(:articles_category, :category_id, Category.kept, :category_id, :category, {include_hidden: false}) do |b| %>
     <%= b.label { b.check_box + b.text } %>
     <% end %>
