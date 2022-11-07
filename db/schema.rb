@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_06_172639) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_07_161506) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_172639) do
     t.index ["category_id"], name: "index_articles_categories_on_category_id"
   end
 
-  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+  create_table "categories", primary_key: "category_id", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "category"
     t.datetime "discarded_at"
     t.datetime "created_at", null: false

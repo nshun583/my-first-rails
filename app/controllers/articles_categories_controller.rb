@@ -4,23 +4,9 @@ class ArticlesCategoriesController < ApplicationController
 
     # there are possibly several category_ids requested once, so treat them each
     for @each_category_id in params[:articles_category][:category_id]
-
-      # achieve "INSERT IGNORE" like behavior by wiping category relationship once and re-insert
-      @articles_category_current = ArticlesCategory.find_by(article_id: params[:article_id], category_id: @each_category_id)
-      logger.debug(@articles_category_current.inspect)
-      if @articles_category_current.nil?
-         # do nothing here
-      else
-        @articles_category_current.destroy
-      end
-
-      @articles_category = ArticlesCategory.new({article_id: params[:article_id], category_id: @each_category_id})
-      if @articles_category.save
-        logger.debug("category relation saved")
-        logger.debug(@articles_category.inspect)
-      else
-        logger.debug("category relation save failed")
-      end
+      logger.debug(@each_category_id)
+      # achieve "INSERT" or "UPDATE" like behavior by upsert to avoid "ActiveRecord::RecordNotUnique"
+      ArticlesCategory.upsert({article_id: params[:article_id], category_id: @each_category_id},on_duplicate: :update)
     end
     redirect_to article_path(@article)
   end
